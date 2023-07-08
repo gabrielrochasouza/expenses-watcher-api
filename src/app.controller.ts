@@ -1,20 +1,24 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('deputados')
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
+  appRunningMessage(): string {
+    return 'App is running!! 🎉';
+  }
+  @Get('deputados')
   async consultarDeputados(): Promise<any> {
     return this.appService.consultarDeputados();
   }
-  @Get('/:id')
+  @Get('deputados/:id')
   async procurarDeputado(@Param('id') id: string): Promise<any> {
     return this.appService.procurarDeputado(id);
   }
   @Get(
-    '/:id/despesas/?pagina=:pagina&ano=:ano&itens=100&ordenarPor=mes&ordem=Desc',
+    'deputados/:id/despesas/?pagina=:pagina&ano=:ano&itens=100&ordenarPor=mes&ordem=Desc',
   )
   async consultarDespesas(
     @Param('id') id: string,
