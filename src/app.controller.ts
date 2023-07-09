@@ -1,5 +1,6 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, Response } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Response as Res } from 'express';
 
 @Controller()
 export class AppController {
@@ -25,8 +26,9 @@ export class AppController {
     @Query('itens') itens: string,
     @Query('ordenarPor') ordenarPor: string,
     @Query('ordem') ordem: string,
-  ): Promise<any> {
-    return this.appService.consultarDespesas({
+    @Response() response: Res,
+  ): Promise<Res> {
+    const res = await this.appService.consultarDespesas({
       id,
       pagina,
       ano,
@@ -34,5 +36,8 @@ export class AppController {
       ordenarPor,
       ordem,
     });
+    return response
+      .set({ 'x-total-count': res.headers['x-total-count'] })
+      .json(res.data);
   }
 }

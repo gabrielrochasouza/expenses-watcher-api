@@ -28,8 +28,8 @@ let AppController = class AppController {
     async procurarDeputado(id) {
         return this.appService.procurarDeputado(id);
     }
-    async consultarDespesas(id, pagina, ano, itens, ordenarPor, ordem) {
-        return this.appService.consultarDespesas({
+    async consultarDespesas(id, pagina, ano, itens, ordenarPor, ordem, response) {
+        const res = await this.appService.consultarDespesas({
             id,
             pagina,
             ano,
@@ -37,6 +37,9 @@ let AppController = class AppController {
             ordenarPor,
             ordem,
         });
+        return response
+            .set({ 'x-total-count': res.headers['x-total-count'] })
+            .json(res.data);
     }
 };
 __decorate([
@@ -66,8 +69,9 @@ __decorate([
     __param(3, (0, common_1.Query)('itens')),
     __param(4, (0, common_1.Query)('ordenarPor')),
     __param(5, (0, common_1.Query)('ordem')),
+    __param(6, (0, common_1.Response)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String, String, String]),
+    __metadata("design:paramtypes", [String, String, String, String, String, String, Object]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "consultarDespesas", null);
 AppController = __decorate([

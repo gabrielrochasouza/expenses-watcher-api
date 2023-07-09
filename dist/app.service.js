@@ -27,7 +27,7 @@ let AppService = class AppService {
             ordenarPor,
             ordem,
         });
-        return response.data;
+        return response;
     }
 };
 AppService = __decorate([

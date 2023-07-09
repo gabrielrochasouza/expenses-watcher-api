@@ -27,6 +27,6 @@ export class AppService {
       ordenarPor,
       ordem,
     });
-    return response.data;
+    return response;
   }
 }
