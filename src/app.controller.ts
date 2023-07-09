@@ -38,6 +38,6 @@ export class AppController {
     });
     return response
       .set({ 'x-total-count': res.headers['x-total-count'] })
-      .json(res.data);
+      .json({ ...res.data, 'x-total-count': res.headers['x-total-count'] });
   }
 }

@@ -39,7 +39,7 @@ let AppController = class AppController {
         });
         return response
             .set({ 'x-total-count': res.headers['x-total-count'] })
-            .json(res.data);
+            .json(Object.assign(Object.assign({}, res.data), { 'x-total-count': res.headers['x-total-count'] }));
     }
 };
 __decorate([
