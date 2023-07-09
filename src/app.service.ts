@@ -11,8 +11,22 @@ export class AppService {
     const response = await externalApi.procurarDeputado(id);
     return response.data;
   }
-  async consultarDespesas({ id, pagina, ano }): Promise<any> {
-    const response = await externalApi.consultarDespesas({ id, pagina, ano });
+  async consultarDespesas({
+    id,
+    pagina,
+    ano,
+    itens,
+    ordenarPor,
+    ordem,
+  }): Promise<any> {
+    const response = await externalApi.consultarDespesas({
+      id,
+      pagina,
+      ano,
+      itens,
+      ordenarPor,
+      ordem,
+    });
     return response.data;
   }
 }

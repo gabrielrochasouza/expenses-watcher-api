@@ -18,8 +18,15 @@ let AppService = class AppService {
         const response = await external_api_1.default.procurarDeputado(id);
         return response.data;
     }
-    async consultarDespesas({ id, pagina, ano }) {
-        const response = await external_api_1.default.consultarDespesas({ id, pagina, ano });
+    async consultarDespesas({ id, pagina, ano, itens, ordenarPor, ordem, }) {
+        const response = await external_api_1.default.consultarDespesas({
+            id,
+            pagina,
+            ano,
+            itens,
+            ordenarPor,
+            ordem,
+        });
         return response.data;
     }
 };

@@ -17,14 +17,22 @@ export class AppController {
   async procurarDeputado(@Param('id') id: string): Promise<any> {
     return this.appService.procurarDeputado(id);
   }
-  @Get(
-    'deputados/:id/despesas/?pagina=:pagina&ano=:ano&itens=100&ordenarPor=mes&ordem=Desc',
-  )
+  @Get('deputados/:id/despesas')
   async consultarDespesas(
     @Param('id') id: string,
-    @Query() pagina: string,
-    @Query() ano: string,
+    @Query('pagina') pagina: string,
+    @Query('ano') ano: string,
+    @Query('itens') itens: string,
+    @Query('ordenarPor') ordenarPor: string,
+    @Query('ordem') ordem: string,
   ): Promise<any> {
-    return this.appService.consultarDespesas({ id, pagina, ano });
+    return this.appService.consultarDespesas({
+      id,
+      pagina,
+      ano,
+      itens,
+      ordenarPor,
+      ordem,
+    });
   }
 }

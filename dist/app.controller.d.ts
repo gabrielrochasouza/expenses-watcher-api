@@ -5,5 +5,5 @@ export declare class AppController {
     appRunningMessage(): string;
     consultarDeputados(): Promise<any>;
     procurarDeputado(id: string): Promise<any>;
-    consultarDespesas(id: string, pagina: string, ano: string): Promise<any>;
+    consultarDespesas(id: string, pagina: string, ano: string, itens: string, ordenarPor: string, ordem: string): Promise<any>;
 }

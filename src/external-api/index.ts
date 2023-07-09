@@ -11,9 +11,16 @@ export default {
   procurarDeputado(id) {
     return api.get('deputados/' + id);
   },
-  consultarDespesas({ id, pagina, ano }) {
+  consultarDespesas({
+    id,
+    pagina,
+    ano,
+    itens = 100,
+    ordenarPor = 'mes',
+    ordem = 'Desc',
+  }) {
     return api.get(
-      `deputados/${id}/despesas/?pagina=${pagina}&ano=${ano}&itens=100&ordenarPor=mes&ordem=Desc`,
+      `deputados/${id}/despesas/?pagina=${pagina}&ano=${ano}&itens=${itens}&ordenarPor=${ordenarPor}&ordem=${ordem}`,
     );
   },
 };

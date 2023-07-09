@@ -28,8 +28,15 @@ let AppController = class AppController {
     async procurarDeputado(id) {
         return this.appService.procurarDeputado(id);
     }
-    async consultarDespesas(id, pagina, ano) {
-        return this.appService.consultarDespesas({ id, pagina, ano });
+    async consultarDespesas(id, pagina, ano, itens, ordenarPor, ordem) {
+        return this.appService.consultarDespesas({
+            id,
+            pagina,
+            ano,
+            itens,
+            ordenarPor,
+            ordem,
+        });
     }
 };
 __decorate([
@@ -52,12 +59,15 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "procurarDeputado", null);
 __decorate([
-    (0, common_1.Get)('deputados/:id/despesas/?pagina=:pagina&ano=:ano&itens=100&ordenarPor=mes&ordem=Desc'),
+    (0, common_1.Get)('deputados/:id/despesas'),
     __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Query)()),
-    __param(2, (0, common_1.Query)()),
+    __param(1, (0, common_1.Query)('pagina')),
+    __param(2, (0, common_1.Query)('ano')),
+    __param(3, (0, common_1.Query)('itens')),
+    __param(4, (0, common_1.Query)('ordenarPor')),
+    __param(5, (0, common_1.Query)('ordem')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:paramtypes", [String, String, String, String, String, String]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "consultarDespesas", null);
 AppController = __decorate([
